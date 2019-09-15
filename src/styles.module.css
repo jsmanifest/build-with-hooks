@@ -1,0 +1,9 @@
+.pasteBin {
+  width: 100%;
+  margin: 12px 0;
+  outline: none;
+  padding: 12px;
+  border: 2px solid #eee;
+  color: #666;
+  border-radius: 4px;
+}
