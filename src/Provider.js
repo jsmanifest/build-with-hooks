@@ -4,7 +4,6 @@ import { attachSlots, split } from './utils'
 import Context from './Context'
 
 const initialState = {
-  slots: 0,
   slotifiedContent: [],
   drafting: true,
   modalOpened: false,
@@ -16,8 +15,6 @@ function reducer(state, action) {
       return { ...state, slotifiedContent: action.content }
     case 'set-drafting':
       return { ...state, drafting: action.drafting }
-    case 'set-slots':
-      return { ...state, slots: action.amount }
     case 'open-modal':
       return { ...state, modalOpened: true }
     case 'close-modal':
@@ -31,6 +28,7 @@ function useSlotify() {
   const [state, dispatch] = React.useReducer(reducer, initialState)
   const textareaRef = React.useRef()
   const textareaUtils = React.useRef()
+  const modalRef = React.useRef()
 
   function onSave() {
     setDrafting(false)
@@ -55,10 +53,9 @@ function useSlotify() {
       textareaUtils.current.copy()
       content = textareaUtils.current.getText()
     }
-    const slot = <Slot />
     if (content && typeof content === 'string') {
-      const setSlots = (amount) => dispatch({ type: 'set-slots', amount })
-      slotifiedContent = attachSlots(split(content), slot, setSlots)
+      const slot = <Slot />
+      slotifiedContent = attachSlots(split(content), slot)
     }
     if (!state.drafting) {
       setDrafting(true)
@@ -75,6 +72,7 @@ function useSlotify() {
     textareaUtils,
     openModal,
     closeModal,
+    modalRef,
   }
 }
 

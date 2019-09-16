@@ -1,4 +1,4 @@
-export function attachSlots(content, slot, setSlots) {
+export function attachSlots(content, slot) {
   if (!Array.isArray(content)) {
     throw new Error('content is not an array')
   }
@@ -6,12 +6,10 @@ export function attachSlots(content, slot, setSlots) {
   // Post is too short. Only provide a quote at the top
   if (content.length <= 50) {
     result = [slot, ...content]
-    setSlots(1)
   }
   // Post is a little larger but 3 quotes is excessive. Insert a max of 2 quotes
   else if (content.length > 50 && content.length < 100) {
     result = [slot, ...content, slot]
-    setSlots(2)
   }
   // Post should be large enough to look beautiful with 3 quotes inserted (top/mid/bottom)
   else if (content.length > 100) {
@@ -23,8 +21,8 @@ export function attachSlots(content, slot, setSlots) {
       ...content.slice(midpoint),
       slot,
     ]
-    setSlots(3)
   }
+
   return result
 }
 

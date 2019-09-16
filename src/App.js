@@ -4,7 +4,6 @@ import Button from './Button'
 import Context from './Context'
 import Provider from './Provider'
 import PasteBin from './PasteBin'
-import Slot from './Slot'
 import styles from './styles.module.css'
 
 // Purposely call each fn without args since we don't need them
@@ -14,12 +13,16 @@ const App = () => {
   const {
     modalOpened,
     slotifiedContent = [],
-    drafting,
     slotify,
     onSave,
     openModal,
     closeModal,
+    modalRef,
   } = React.useContext(Context)
+
+  const ModalContent = ({ innerRef, ...props }) => (
+    <div ref={innerRef} {...props} />
+  )
 
   return (
     <div className={styles.container}>
@@ -32,32 +35,25 @@ const App = () => {
         }
         className={styles.modal}
       >
-        <Modal.Content>
+        <Modal.Content as={ModalContent} innerRef={modalRef}>
           <Modal.Description>
             {slotifiedContent.map((content) => (
               <div style={{ whiteSpace: 'pre-line' }}>{content}</div>
             ))}
           </Modal.Description>
           <Modal.Actions>
-            <Button type='button' onClick={callFns(onSave, closeModal)}>
+            <Button type='button' onClick={onSave}>
               SAVE
             </Button>
+            &nbsp;
+            <Button type='button' onClick={closeModal}>
+              CLOSE
+            </Button>
+            &nbsp;
           </Modal.Actions>
         </Modal.Content>
       </Modal>
       <PasteBin onSubmit={slotify} />
-      {!drafting &&
-        slotifiedContent.map((content) => {
-          if (React.isValidElement(content)) {
-            if (content.props.slot) {
-              return React.cloneElement(content, {
-                className: styles.slotQuoteStatic,
-              })
-            }
-          }
-          console.log(content)
-          return content
-        })}
     </div>
   )
 }

@@ -13,6 +13,12 @@
   outline: none;
 }
 
+.slotStyleStatic {
+  background: rgba(16, 46, 54, 0.02);
+  padding: 0;
+  box-shadow: 0 3px 15px 15px rgba(51, 51, 51, 0.03);
+}
+
 .slotQuoteContainer {
   height: 70px;
   margin: 12px 0;
@@ -20,6 +26,15 @@
 
 .slotQuoteContainer:hover {
   background: rgba(245, 49, 104, 0.3);
+}
+
+.slotQuoteContainerStatic {
+  height: auto;
+  min-height: 70px;
+}
+
+.slotQuoteContainerStatic:hover {
+  background: rgba(100, 100, 100, 0.07);
 }
 
 .slotQuoteInner {
@@ -34,6 +49,11 @@
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+}
+
+.slotQuoteInnerStatic {
+  background: rgba(100, 100, 100, 0.05);
+  justify-content: space-around;
 }
 
 .slotQuoteInner h3 {
@@ -73,11 +93,11 @@
 .slotQuoteInputAttention {
   transition: all 1s ease-out;
   animation: emptyAuthor 3s infinite;
-  border: 1px solid #975cf5;
+  border: 1px solid #91ffde;
 }
 
 .slotQuoteInputAttention::placeholder {
-  color: #975cf5;
+  color: #91ffde;
 }
 
 .slotQuoteInputAttention:hover,
@@ -99,21 +119,20 @@
 }
 
 .slotQuoteStatic {
-  background: #c7f4ff !important;
-  color: #fff !important;
+  padding: 12px 0;
 }
 
-/* Quote */
-.slotQuoteStatic > div:first-child {
+.slotQuoteStaticQuote {
   font-weight: 700;
-  color: #01d85b;
+  color: #2bc7c7 !important;
 }
 
-/* Author */
-.slotQuoteStatic > div:nth-child(2) {
+.slotQuoteStaticAuthor {
+  margin-left: 50px;
   font-style: italic;
-  color: #fff;
+  color: rgb(51, 52, 54) !important;
   opacity: 0.7;
+  text-align: right;
 }
 
 .pasteBin {

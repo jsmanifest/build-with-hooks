@@ -44,13 +44,13 @@ function SlotDrafting({ quote, author, onChange }) {
 function SlotStatic({ quote, author }) {
   return (
     <div className={styles.slotQuoteStatic}>
-      <div className={styles.slotQuoteStaticAuthor}>{author}</div>
-      <div className={styles.slotQuoteStaticQuote}>{quote}</div>
+      <h2 className={styles.slotQuoteStaticQuote}>{quote}</h2>
+      <p className={styles.slotQuoteStaticAuthor}>- {author}</p>
     </div>
   )
 }
 
-function Slot({ input = 'textfield', staticValues }) {
+function Slot({ input = 'textfield' }) {
   const [quote, setQuote] = React.useState('')
   const [author, setAuthor] = React.useState('')
   const { drafting } = React.useContext(Context)
@@ -78,7 +78,7 @@ function Slot({ input = 'textfield', staticValues }) {
   } else {
     switch (input) {
       case 'textfield':
-        staticComponent = <SlotStatic {...staticValues} />
+        staticComponent = <SlotStatic quote={quote} author={author} />
         break
       default:
         break
@@ -86,8 +86,17 @@ function Slot({ input = 'textfield', staticValues }) {
   }
 
   return (
-    <div className={cx(styles.slotQuoteContainer, styles.slotStyle)}>
-      <div className={styles.slotQuoteInner}>
+    <div
+      className={cx(styles.slotQuoteContainer, styles.slotStyle, {
+        [styles.slotQuoteContainerStatic]: !drafting,
+        [styles.slotStyleStatic]: !drafting,
+      })}
+    >
+      <div
+        className={cx(styles.slotQuoteInner, {
+          [styles.slotQuoteInnerStatic]: !drafting,
+        })}
+      >
         {drafting ? draftComponent : staticComponent}
       </div>
     </div>
