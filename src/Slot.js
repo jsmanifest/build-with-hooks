@@ -136,8 +136,9 @@ function Slot({ input = 'textfield' }) {
         boxShadow: drafting
           ? undefined
           : '0 3px 15px 15px rgba(51, 51, 51, 0.03)',
-        height: drafting ? 70 : 'auto',
+        height: drafting ? 70 : '100%',
         minHeight: drafting ? 'auto' : 70,
+        maxHeight: drafting ? 'auto' : 100,
         padding: drafting ? 8 : 0,
       }}
       className={cx({
