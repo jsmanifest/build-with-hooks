@@ -60,7 +60,7 @@ function SlotDrafting({ quote, author, onChange }) {
   )
 }
 
-function SlotStatic({ cb, quote, author }) {
+function SlotStatic({ quote, author }) {
   // React.useEffect(() => {
   //   if (pendingCb) {
   //     console.log('invoking cb callback SlotStatic')
@@ -89,7 +89,7 @@ function SlotStatic({ cb, quote, author }) {
 function Slot({ input = 'textfield' }) {
   const [quote, setQuote] = React.useState('')
   const [author, setAuthor] = React.useState('')
-  const { cb, drafting, pendingCb } = React.useContext(Context)
+  const { drafting } = React.useContext(Context)
 
   function onChange(e) {
     if (e.target.name === 'quote') {

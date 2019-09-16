@@ -29,20 +29,8 @@ function useSlotify() {
   const textareaRef = React.useRef()
   const textareaUtils = React.useRef()
   const modalRef = React.useRef()
-  const cb = React.useRef()
-  const [pendingCb, setPendingCb] = React.useState(false)
 
   function onSave() {
-    cb.current = function() {
-      const html = modalRef.current.innerHTML
-      const inputEl = document.createElement('textarea')
-      document.body.appendChild(inputEl)
-      inputEl.value = html
-      inputEl.select()
-      document.execCommand('copy')
-      document.body.removeChild(inputEl)
-    }
-    setPendingCb(true)
     setDrafting(false)
   }
 
@@ -96,9 +84,6 @@ function useSlotify() {
     closeModal,
     modalRef,
     onCopyFinalContent,
-    cb,
-    pendingCb,
-    setPendingCb,
   }
 }
 
