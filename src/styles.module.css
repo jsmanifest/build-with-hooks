@@ -1,88 +1,13 @@
-.container {
-  padding: 12px;
-  box-sizing: border-box;
+.slotRoot:hover {
+  background: rgba(245, 49, 104, 0.3) !important;
 }
 
-.slotStyle {
-  width: 100%;
-  background: rgba(175, 56, 90, 0.2);
-  color: #fff;
-  border-radius: 4px;
-  transition: all 0.2s ease-out;
-  padding: 8px;
-  outline: none;
+.slotRootStatic:hover {
+  background: rgba(100, 100, 100, 0.07) !important;
 }
 
-.slotStyleStatic {
-  background: rgba(16, 46, 54, 0.02);
-  padding: 0;
-  box-shadow: 0 3px 15px 15px rgba(51, 51, 51, 0.03);
-}
-
-.slotQuoteContainer {
-  height: 70px;
-  margin: 12px 0;
-}
-
-.slotQuoteContainer:hover {
-  background: rgba(245, 49, 104, 0.3);
-}
-
-.slotQuoteContainerStatic {
-  height: auto;
-  min-height: 70px;
-}
-
-.slotQuoteContainerStatic:hover {
-  background: rgba(100, 100, 100, 0.07);
-}
-
-.slotQuoteInner {
-  transition: all 0.2s ease-out;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  background: rgba(100, 100, 100, 0.35);
-  padding: 0 6px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-}
-
-.slotQuoteInnerStatic {
-  background: rgba(100, 100, 100, 0.05);
-  justify-content: space-around;
-}
-
-.slotQuoteInner h3 {
-  opacity: 0.5;
-  font-weight: 300;
-  user-select: none;
-}
-
-.slotQuoteInner:hover {
+.slotInnerRoot:hover {
   filter: brightness(80%);
-}
-
-.slotQuoteInputs {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.slotQuoteInput {
-  border: 0;
-  border-radius: 4px;
-  background: none;
-  font-size: 1.2rem;
-  color: #fff;
-  padding: 6px 15px;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  margin-right: 4px;
 }
 
 .slotQuoteInput::placeholder {
@@ -93,11 +18,11 @@
 .slotQuoteInputAttention {
   transition: all 1s ease-out;
   animation: emptyAuthor 3s infinite;
-  border: 1px solid #91ffde;
+  border: 1px solid #91ffde !important;
 }
 
 .slotQuoteInputAttention::placeholder {
-  color: #91ffde;
+  color: #91ffde !important;
 }
 
 .slotQuoteInputAttention:hover,
@@ -116,38 +41,4 @@
   100% {
     opacity: 1;
   }
-}
-
-.slotQuoteStatic {
-  padding: 12px 0;
-}
-
-.slotQuoteStaticQuote {
-  font-weight: 700;
-  color: #2bc7c7 !important;
-}
-
-.slotQuoteStaticAuthor {
-  margin-left: 50px;
-  font-style: italic;
-  color: rgb(51, 52, 54) !important;
-  opacity: 0.7;
-  text-align: right;
-}
-
-.pasteBin {
-  width: 100%;
-  margin: 12px 0;
-  outline: none;
-  padding: 12px;
-  border: 2px solid #eee;
-  color: #666;
-  border-radius: 4px;
-}
-
-.modal {
-  background: #fff;
-  padding: 12px;
-  color: #333;
-  width: 100%;
 }

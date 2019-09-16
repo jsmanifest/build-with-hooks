@@ -1,6 +1,5 @@
 import React from 'react'
 import Context from './Context'
-import styles from './styles.module.css'
 
 function PasteBin(props) {
   const { textareaRef, textareaUtils } = React.useContext(Context)
@@ -19,7 +18,15 @@ function PasteBin(props) {
   return (
     <textarea
       ref={textareaRef}
-      className={styles.pasteBin}
+      style={{
+        width: '100%',
+        margin: '12px 0',
+        outline: 'none',
+        padding: 12,
+        border: '2px solid #eee',
+        color: '#666',
+        borderRadius: 4,
+      }}
       rows={25}
       {...props}
     />

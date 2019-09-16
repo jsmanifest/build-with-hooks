@@ -4,10 +4,13 @@ import Button from './Button'
 import Context from './Context'
 import Provider from './Provider'
 import PasteBin from './PasteBin'
-import styles from './styles.module.css'
 
 // Purposely call each fn without args since we don't need them
 const callFns = (...fns) => () => fns.forEach((fn) => fn && fn())
+
+const ModalContent = ({ innerRef, ...props }) => (
+  <div ref={innerRef} {...props} />
+)
 
 const App = () => {
   const {
@@ -18,14 +21,16 @@ const App = () => {
     openModal,
     closeModal,
     modalRef,
+    onCopyFinalContent,
   } = React.useContext(Context)
 
-  const ModalContent = ({ innerRef, ...props }) => (
-    <div ref={innerRef} {...props} />
-  )
-
   return (
-    <div className={styles.container}>
+    <div
+      style={{
+        padding: 12,
+        boxSizing: 'border-box',
+      }}
+    >
       <Modal
         open={modalOpened}
         trigger={
@@ -33,10 +38,15 @@ const App = () => {
             Start Quotifying
           </Button>
         }
-        className={styles.modal}
+        style={{
+          background: '#fff',
+          padding: 12,
+          color: '#333',
+          width: '100%',
+        }}
       >
-        <Modal.Content as={ModalContent} innerRef={modalRef}>
-          <Modal.Description>
+        <Modal.Content>
+          <Modal.Description as={ModalContent} innerRef={modalRef}>
             {slotifiedContent.map((content) => (
               <div style={{ whiteSpace: 'pre-line' }}>{content}</div>
             ))}
@@ -50,6 +60,9 @@ const App = () => {
               CLOSE
             </Button>
             &nbsp;
+            <Button type='button' onClick={onCopyFinalContent}>
+              COPY
+            </Button>
           </Modal.Actions>
         </Modal.Content>
       </Modal>
